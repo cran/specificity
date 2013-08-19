@@ -1,5 +1,7 @@
-ad359c64df162074830fada4dfb904d3 *DESCRIPTION
+28ae27d3984631ee64511755f2fa07e0 *DESCRIPTION
 3ae93206a9481ac1d324098ee77e3516 *NAMESPACE
-c5e94a50a0f7d1164f6fb415d36f33cc *R/specificity.R
-1915038967bab520e6f5cf6fd390748e *man/specificity.Rd
-af2405b080521ed68b1a0eafb05b0425 *man/specificityHelpers.Rd
+eef3377f6f7f7f2234508897ebf7a1a8 *R/randomCorrelations.R
+37c9d297dc4b06687479890536903051 *R/specificity.R
+b9a53dc484008f905175bdfc559a2dff *man/eta2.Rd
+c0a232bbca2db307391b311d007a6390 *man/randomCorrelations.Rd
+3b15fde65edc985b0efa3182ab0acd7f *man/specificity.Rd

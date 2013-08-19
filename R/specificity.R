@@ -67,9 +67,6 @@ specificityGlm <- function(Formula, Data, Key, Shuffle = "exclusive", Family="bi
     }
 
 eta2 = function(x) {
-  if("car" %in% installed.packages() == F) install.packages("car")
-  require(car)        
-  outcome = names(x$model[1])    
   a = data.frame(Anova(x, type=3))
   part.eta2 = (a[,1] / (a[,1] + a[nrow(a),1]))[-(nrow(a))]
   result = data.frame(Part.Eta.Sq = round(part.eta2, 3), p.value = round(a[1:(nrow(a)-1),4],3))

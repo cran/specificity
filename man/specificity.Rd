@@ -4,20 +4,28 @@
 \alias{specificityEta2}
 \alias{specificityGlm}
 \alias{specificity}
+\alias{dum}
+\alias{scramble}
+\alias{specEta2}
+\alias{specGlm}
+\alias{specLm}
+\alias{print.summary.specificity}
+\alias{summary.specificity}
 \title{
 Specificity of personality trait-outcome associations
 }
 \description{
 These functions test the specificity of personality trait-outcome associations by comparing the observed associations to those obtained using randomly created personality scales. Running the function requires item-level data from multi-trait personality questionnaires and the scoring key for the questionnaire. 
 
-The functions are based on \code{lm} (or on \code{glm}, if \code{specificityGlm} is used).
+The functions are based on \code{\link{lm}} (or on \code{\link{glm}}, if \code{specificityGlm} is used).
 }
 \usage{
 specificityLm(Formula, Data, Key, Shuffle = "exclusive", R = 1000)
 
 specificityEta2(Formula, Data, Key, Shuffle = "exclusive", R = 1000)
 
-specificityGlm(Formula, Data, Key, Shuffle = "exclusive", Family="binomial", R = 1000)
+specificityGlm(Formula, Data, Key, Shuffle = "exclusive", Family="binomial", 
+R = 1000)
 }
 \arguments{
   \item{Formula}{
@@ -36,7 +44,7 @@ This specifies the way random scales are created: \code{"none"} means that no ra
 The number of simulations.
 }
   \item{Family}{
-NB! Only to be specified, when \code{speficityGlm} is used. Specifies the \code{family} of the \code{glm}. See the example below.
+NB! Only to be specified, when \code{speficityGlm} is used. Specifies the \code{\link{family}} of the \code{glm}. See the example below.
 }
 }
 
@@ -45,7 +53,7 @@ The Five-Factor Model personality traits tend to be associated with many outcome
 
 These functions facilitate carrying out such specificity analyses.
 
-\code{specificityLm} is suitable, when the \code{Outcome} is a normally distributed continuous variable; \code{specificityEta2} is suitable, when the \code{Outcome} is the independent variable and is a \code{factor}; \code{specificityGlm} is suitable, when the \code{Outcome} is the dependent variable and has a non-normal distribution.
+\code{specificityLm} is suitable, when the \code{Outcome} is a normally distributed continuous variable, whereas \code{specificityEta2} is suitable, when the \code{Outcome} is the independent variable and is a \code{factor}; \code{specificityGlm} is suitable, when the \code{Outcome} is the dependent variable and has a non-normal distribution.
 }
 
 \value{
@@ -67,9 +75,11 @@ The result will be an object of S3 class. Typing \code{summary(...)} will displa
 Mottus, R., Johnson, W., Booth, T., Deary, I. J., Konstabel, K., Realo, A., & Allik, J. (2013). Generality and specificity of personality trait scores in their associations with other phenomena. Submitted for publication}
 \author{
 Kenn Konstabel \email{kenn.konstabel@tai.ee}, 
-Rene Mottus \email{rene.mottus@ut.ee}
+Rene Mottus \email{rene.mottus@ed.ac.uk}
 }
-
+\seealso{
+\code{\link{randomCorrelations}}
+}
 \examples{
 # Create random data.frame
 data = as.data.frame(matrix(ncol=63, nrow=100, sample(1:5, size=6300, replace=TRUE)))
@@ -79,7 +89,7 @@ colnames(data) = c(paste("Per", 1:60, sep=""), c("Outcome", "Covar1", "Covar2"))
 data$OutcomeCat = as.factor(data$Outcome)  
 
 # Create Keys
-keyWithNames <- list(start=1, end=60, scale = rep(1:5, each=12), names = c("N", "E", "O", "A", "C"))
+keyWithNames <- list(start=1, end=60, scale=rep(1:5, each=12), names=c("N","E","O","A","C"))
 keyWithoutNames <- list(start=1, end=60, scale = rep(1:5, each=12))
 
 # Run analyses
